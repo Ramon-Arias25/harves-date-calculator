@@ -24,7 +24,7 @@ c- Fecha estimada de cosecha
 
 
 ####Tabla
-![alt Text](https://drive.google.com/file/d/1oY2-3lQRiFgPF_Knh8uOTEeuwt6Hamc0/view?usp=sharing)
+![alt Text](https://raw.githubusercontent.com/Ramon-Arias25/harves-date-calculator/main/tabla-cosecha.PNG)
 
 
 
