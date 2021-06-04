@@ -7,6 +7,10 @@ public class SpeciesEntity{
 	private float possibleSeedlings;
 	private String harvestDate;
 	
+	public SpeciesEntity() {
+		super();
+	}
+
 	public String getSpecies() {
 		return species;
 	}

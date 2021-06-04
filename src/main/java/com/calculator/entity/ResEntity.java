@@ -6,6 +6,10 @@ public class ResEntity {
 
 	private String mensaje;
 
+	public ResEntity() {
+		super();
+	}
+
 	public String getMensaje() {
 		return mensaje;
 	}

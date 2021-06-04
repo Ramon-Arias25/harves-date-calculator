@@ -1,21 +1,12 @@
-package com.calculator.model;
+package com.calculator.entity;
 
 import java.util.List;
 
 public class SowingCalendar {
 	private String species;
 	private float distance;
-//	private Date dateIni;
-//	private Date dateEnd;
 	private List<?> seedTime;
 	private int dayCount;
-	
-	public SowingCalendar(String species, float distance, int dayCount) {
-	super();
-	this.species = species;
-	this.distance = distance;
-	this.dayCount = dayCount;
-}
 	
 	public SowingCalendar(String species, float distance, List<?> seedTime, int dayCount) {
 		super();
@@ -48,11 +39,5 @@ public class SowingCalendar {
 	}
 	public void setSeedTime(List<?> seedTime) {
 		this.seedTime = seedTime;
-	}
-
-	@Override
-	public String toString() {
-		return "Calendar [species=" + species + ", distance=" + distance + ", seedTime=" + seedTime + ", dayCount="
-				+ dayCount + "]";
 	}
 }

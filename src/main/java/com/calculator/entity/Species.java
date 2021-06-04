@@ -1,12 +1,15 @@
-package com.calculator.model;
+package com.calculator.entity;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Species {
 	private String name;
 	private float width;
 	private float high;
 
 	public String getName() {
-		return name;
+		return name.toLowerCase();
 	}
 
 	public void setName(String name) {
