@@ -31,3 +31,12 @@ c- Fecha estimada de cosecha
 La tabla esta en una lista que se puede mejorar enviandolo a bdd en lugar de una lista generada en el constructor
 
 los metodos CalculatorServices estan redundando el map para buscar esto mejoraria la usar jpa
+
+
+Ejemplo de Request valido
+
+{
+    "name": "rabanito", _<- nombre de la especie no discrimina mayusculas_
+    "width": 1, _<- ancho de la superficie a evaluar_
+    "high": 1 _<- largo de la superficie a evaluar_
+}

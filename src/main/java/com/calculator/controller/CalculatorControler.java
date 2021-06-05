@@ -18,18 +18,21 @@ public class CalculatorControler {
 
 	@Autowired
 	private ResEntity responseMessage;
+	
+	@Autowired
+	private CalculatorServices calculatorServices;
 
 	@GetMapping("/healtCheck")
-	public String saludo() {
+	public String healtCheck() {
 		return "harves-date-calculator-api";
 	}
 
 	@PostMapping("/calculador")
 	public ResponseEntity<?> calculador(@RequestBody() Species species) {
 		if (species.getHigh() < 0 || species.getWidth() < 0) {
-			this.responseMessage.setMensaje("Los datos ingresados son incorrectos");
-			return ResponseEntity.ok(this.responseMessage);
+			responseMessage.setMensaje("Los datos ingresados son incorrectos");
+			return ResponseEntity.ok(responseMessage);
 		}
-		return new CalculatorServices().calculator(species);
+		return calculatorServices.calculator(species);
 	}
 }

@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.calculator.entity.ResEntity;
 import com.calculator.entity.SowingCalendar;
 import com.calculator.entity.Species;
 import com.calculator.entity.SpeciesEntity;
 
+@Service
 public class CalculatorServices {
 
 	List<SowingCalendar> calendar = new ArrayList<>();
@@ -36,11 +37,12 @@ public class CalculatorServices {
 	public ResponseEntity<?>calculator ( Species species) {
 		ResEntity resEntity = new ResEntity();
 		SpeciesEntity speciesEntity = new SpeciesEntity();
-		if (exists(species) ) {
-			if (validateSowingDate(species)) {				
+		SowingCalendar calendarToCalc = calendar.stream().collect(Collectors.toMap(x -> x.getSpecies(), x -> x)).get(species.getName());
+		if (exists(species.getName()) ) {
+			if (calendarToCalc.getSeedTime().contains(Calendar.getInstance().get(Calendar.MONTH) + 1)) {				
 				speciesEntity.setSpecies(species.getName());
-				speciesEntity.setPossibleSeedlings(totalToSow(species));
-				speciesEntity.setHarvestDate(harvesDateCalculator(species));
+				speciesEntity.setPossibleSeedlings(((species.getHigh() * 100)/ calendarToCalc.getDistance()) * ((species.getWidth() * 100) / calendarToCalc.getDistance()));
+				speciesEntity.setHarvestDate(harvesDateCalculator(calendarToCalc.getDayCount()));
 				return ResponseEntity.ok(speciesEntity);
 			}else {
 				resEntity.setMensaje("La especie consultada es apta para la siembra");
@@ -52,35 +54,17 @@ public class CalculatorServices {
 		}
 	}
 	
-	private boolean exists(Species species) {
-		SowingCalendar sowingCalendar = calendar.stream().filter(x -> x.getSpecies().equals(species.getName()))
+	private boolean exists(String speciesName) {
+		SowingCalendar sowingCalendar = calendar.stream().filter(x -> x.getSpecies().equals(speciesName))
 				.findAny()
 				.orElse(null);
-		return sowingCalendar != null ? species.getName()
+		return sowingCalendar != null ? speciesName
 				.equals(sowingCalendar .getSpecies()):false;
 	}
-
-	private boolean validateSowingDate(Species species) {
-		SowingCalendar calendarToValidate = calendar.stream().collect(Collectors.toMap(x -> x.getSpecies(), x -> x))
-				.get(species.getName().toLowerCase());
-		return calendarToValidate.getSeedTime().contains(Calendar.getInstance().get(Calendar.MONTH) + 1);
-	}
-
-	private float totalToSow(Species species) {
-		SowingCalendar calendarToCalc = calendar.stream().collect(Collectors.toMap(x -> x.getSpecies(), x -> x))
-				.get(species.getName().toLowerCase());
-		return ((species.getHigh() * 100) / calendarToCalc.getDistance())
-				* ((species.getWidth() * 100) / calendarToCalc.getDistance());
-	}
-
-	private String harvesDateCalculator(Species species) {
-		Map<String, SowingCalendar> mapCalendar = calendar.stream()
-				.collect(Collectors.toMap(x -> x.getSpecies(), x -> x));
-		SowingCalendar sowingCalenda = mapCalendar.get(species.getName().toLowerCase());
-		int dayCount = sowingCalenda.getDayCount();
+	
+	private String harvesDateCalculator(int dayCount) {
 		Calendar day = Calendar.getInstance();
 		day.add(Calendar.DAY_OF_YEAR, dayCount);
 		return "la fecha estimada de la cosecha seria: " + new SimpleDateFormat("dd/MM/yyyy").format(day.getTime());
 	}
-	
 }
