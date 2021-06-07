@@ -1,7 +1,11 @@
 package com.calculator.entity;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * @author ramon.arias
+ * date: 03/06/2021
+ * current version: 1
+ */
 @Component
 public class Species {
 	private String name;

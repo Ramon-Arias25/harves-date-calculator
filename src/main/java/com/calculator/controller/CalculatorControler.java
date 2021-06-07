@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.calculator.entity.ResEntity;
 import com.calculator.entity.Species;
 import com.calculator.service.CalculatorServices;
-
+/**
+ * @author ramon.arias
+ * date: 03/06/2021
+ * current version: 1
+ */
 @CrossOrigin
 @RestController
 public class CalculatorControler {
@@ -26,7 +30,16 @@ public class CalculatorControler {
 	public String healtCheck() {
 		return "harves-date-calculator-api";
 	}
-
+	/**
+	 * 
+	 * Ejemplo de Request valido
+	 * {
+	 * 	"name": "rabanito", 
+	 * 	"width": 1,
+	 * 	"high": 1
+	 * }
+	 * @param request en formato json
+	 */
 	@PostMapping("/calculador")
 	public ResponseEntity<?> calculador(@RequestBody() Species species) {
 		if (species.getHigh() < 0 || species.getWidth() < 0) {

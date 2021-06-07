@@ -1,7 +1,11 @@
 package com.calculator.entity;
 
 import java.util.List;
-
+/**
+ * @author ramon.arias
+ * date: 03/06/2021
+ * current version: 1
+ */
 public class SowingCalendar {
 	private String species;
 	private float distance;
