@@ -26,17 +26,27 @@ c- Fecha estimada de cosecha
 ####Tabla
 ![alt Text](https://raw.githubusercontent.com/Ramon-Arias25/harves-date-calculator/main/tabla-cosecha.PNG)
 
+1- Integrar MySQL al proyecto actual
+2- Crear una tabla "Especie" que represente a la tabla indicada en la consigna anterior, pero esta vez con id
+3- Usar la especificación JPA para tomar datos de dicha tabla
+4- Crear un repositorio para disponer del método correspondiente para traer el registro de la tabla pedido
+5- Crear un servicio para alojar la lógica de negocio de la aplicación en un método
+6- Modificar el método de la consigna anterior a un controlador, pero esta vez los parámetros de entrada
+deben ser el id (mirar nueva tabla), más el ancho y largo de sembrado
+7- La respuesta debe ser la misma que en el caso anterior (JSON)
 
+En esencia, debe reemplazarse el listado hardcoding por datos populados en la bbdd y crearse
+un modelo con repositorio, servicio y controlador manteniendo la funcionalidad núcleo de la consigna anterior.
 
-La tabla esta en una lista que se puede mejorar enviandolo a bdd en lugar de una lista generada en el constructor
-
-los metodos CalculatorServices estan redundando el map para buscar esto mejoraria la usar jpa
+![alt Text](https://raw.githubusercontent.com/Ramon-Arias25/harves-date-calculator/main/tabla-cosecha2.PNG)
 
 
 Ejemplo de Request valido
 
 {
-    "name": "rabanito", _<- nombre de la especie no discrimina mayusculas_
+    "name": "1", _<- nombre de la especie no discrimina mayusculas_
     "width": 1, _<- ancho de la superficie a evaluar_
     "high": 1 _<- largo de la superficie a evaluar_
 }
+
+GitPuh https://github.com/Ramon-Arias25/harves-date-calculator
