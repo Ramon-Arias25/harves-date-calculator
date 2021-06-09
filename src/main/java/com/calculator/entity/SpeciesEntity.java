@@ -3,11 +3,11 @@ import org.springframework.stereotype.Component;
 /**
  * @author ramon.arias
  * date: 03/06/2021
- * current version: 1
+ * current version: 1.2
  */
 @Component
 public class SpeciesEntity{
-	private String species;
+	private String name;
 	private float possibleSeedlings;
 	private String harvestDate;
 	
@@ -16,11 +16,11 @@ public class SpeciesEntity{
 	}
 
 	public String getSpecies() {
-		return species;
+		return name;
 	}
 	
-	public void setSpecies(String species) {
-		this.species = species;
+	public void setSpecies(String name) {
+		this.name= name;
 	}
 	public float getPossibleSeedlings() {
 		return possibleSeedlings;

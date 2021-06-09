@@ -14,12 +14,12 @@ import com.calculator.service.CalculatorServices;
 /**
  * @author ramon.arias
  * date: 03/06/2021
- * current version: 1
+ * current version: 1.2
  */
 @CrossOrigin
 @RestController
 public class CalculatorControler {
-
+	
 	@Autowired
 	private ResEntity responseMessage;
 	
@@ -34,13 +34,13 @@ public class CalculatorControler {
 	 * 
 	 * Ejemplo de Request valido
 	 * {
-	 * 	"name": "rabanito", 
-	 * 	"width": 1,
-	 * 	"high": 1
+	 * 	"id": 9,  
+	 * 	"width": 1, (metros)
+	 * 	"high": 1 (metros)
 	 * }
 	 * @param request en formato json
 	 */
-	@PostMapping("/calculador")
+	@PostMapping("/calculadorById")
 	public ResponseEntity<?> calculador(@RequestBody() Species species) {
 		if (species.getHigh() < 0 || species.getWidth() < 0) {
 			responseMessage.setMensaje("Los datos ingresados son incorrectos");

@@ -4,20 +4,20 @@ import org.springframework.stereotype.Component;
 /**
  * @author ramon.arias
  * date: 03/06/2021
- * current version: 1
+ * current version: 1.2
  */
 @Component
 public class Species {
-	private String name;
+	private int id;
 	private float width;
 	private float high;
 
-	public String getName() {
-		return name.toLowerCase();
+	public int getid() {
+		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void settid(int id) {
+		this.id = id;
 	}
 
 	public float getWidth() {
